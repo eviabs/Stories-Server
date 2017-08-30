@@ -50,6 +50,12 @@ app.get('/test', function (req, res, next) {
 app.get('/', function (req, res, next) {
     res.render('index.html');
 });
+
+// Home - Stroy
+app.get('/story/:id', function (req, res, next) {
+    // TODO: show story on site
+    res.render('index.html');
+});
 // =====================================================================
 // =====================================================================
 // =====================================================================
