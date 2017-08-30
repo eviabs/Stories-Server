@@ -1,0 +1,54 @@
+================================
+=========   Get Data   =========
+================================
+
+User (GET):
+http://localhost/get_data?type=user&user_name=evia
+http://localhost/get_data?type=user&user_id=1
+
+Login (GET):
+http://localhost/get_data?type=login&user_name=evia&user_password=1234
+
+Story (GET):
+http://localhost/get_data?type=story (all stories)
+http://localhost/get_data?type=story&story_lat=31.80837&story_lon=35.152543&dist=1 (stories that their distance from (lat,lon) is less than dist kms
+
+Routes (GET):
+http://localhost/get_data?type=routes&story_id=1
+
+Coords (GET):
+http://localhost/get_data?type=coord&story_id=1
+http://localhost/get_data?type=coord&route_id=1 (not in use!)
+
+Rcordings (GET):
+http://localhost/get_data?type=recording&coord_id=1
+
+Ratings (GET):
+http://localhost/get_data?type=rating&record_id=1
+
+================================
+=========   Get File   =========
+================================
+http://localhost/get_file?file_name=1.jpg&file_type=image
+
+================================
+=========   Set Data   =========
+================================
+
+User (GET):
+http://localhost/set_data?type=user&user_name=evia&user_password=1234&user_mail=hi@bye.com
+
+Story: (POST):
+http://localhost/upload_file?type=story&user_id=1&story_address=12;גלבוע;מבשרת ציון;ישראל&story_name=סיםור&stories_tags_id=אימה;ילדים&recording_file_duration=2&coord_latitude=31.807859&coord_longitude=35.149479
+
+Routes:
+(not in use!)
+
+Coords (GET):
+http://localhost/set_data?type=coord&coord_user_id=1&coord_route_id=1&coord_latitude=31.807859&coord_longitude=35.149479
+
+Rcordings (POST):
+http://localhost/upload_file?type=recording&user_id=1&coord_id=1&previous_recording_id=1&recording_file_duration=2
+
+Ratings (GET):
+http://localhost/set_data?type=rating&rating_recording_id=2&rating_user_id=1&rating_value=5

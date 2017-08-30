@@ -1,0 +1,27 @@
+{
+  "name": "stories-server",
+  "version": "0.1",
+  "description": "Stories server",
+  "engines": {
+    "node": "5.9.1"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "ejs": "^2.5.6",
+    "express": "4.13.3",
+    "express-fileupload": "",
+    "node-adodb": ""
+  },
+  "repository": {
+    "type": "",
+    "url": ""
+  },
+  "keywords": [
+    "node",
+    "express"
+  ],
+  "license": "MIT"
+}
