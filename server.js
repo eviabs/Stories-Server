@@ -233,7 +233,10 @@ module.exports = {
             // Get story
             case "story":
                 // get all stories (no filters are applied during the db querying)
-                sql_commad = "select t2.story_id as story_id, story_address, story_name, story_user_id , file_path as story_file_path, user_name as story_user_name, story_creation_date ,coord_latitude as story_coord_latitude ,coord_longitude as story_coord_longitude from (select * from (SELECT coords.coord_latitude, coords.coord_longitude, stories.story_id FROM (routes INNER JOIN coords ON routes.route_id = coords.[coord_route_id]) INNER JOIN stories ON routes.story_id = stories.story_id WHERE (((coords.coord_order)=1)))) t1 INNER JOIN (select * from (SELECT stories.story_id, stories.story_address, stories.story_name, stories.story_user_id, files.file_path, users.user_name, stories.story_creation_date, stories.story_image_file_id FROM files INNER JOIN (users INNER JOIN stories ON users.[user_id] = stories.[story_user_id]) ON files.[file_id] = stories.[story_image_file_id])) t2 on t1.story_id = t2.story_id; ";
+
+                // if story_id query was used, refine the select statement with the desired id
+                var by_id = (req.query.story_id !== undefined) ? "WHERE t2.story_id=" + req.query.story_id : "";
+                sql_commad = "select t2.story_id as story_id, story_address, story_name, story_user_id , file_path as story_file_path, user_name as story_user_name, story_creation_date ,coord_latitude as story_coord_latitude ,coord_longitude as story_coord_longitude from (select * from (SELECT coords.coord_latitude, coords.coord_longitude, stories.story_id FROM (routes INNER JOIN coords ON routes.route_id = coords.[coord_route_id]) INNER JOIN stories ON routes.story_id = stories.story_id WHERE (((coords.coord_order)=1)))) t1 INNER JOIN (select * from (SELECT stories.story_id, stories.story_address, stories.story_name, stories.story_user_id, files.file_path, users.user_name, stories.story_creation_date, stories.story_image_file_id FROM files INNER JOIN (users INNER JOIN stories ON users.[user_id] = stories.[story_user_id]) ON files.[file_id] = stories.[story_image_file_id])) t2 on t1.story_id = t2.story_id " + by_id+"; ";
 
                 run_sql_query(sql_commad, function (data) {
                     var stories = data.records;

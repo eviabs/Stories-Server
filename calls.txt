@@ -14,6 +14,7 @@ http://localhost/get_data?type=login&user_name=evia&user_password=1234
 
 Story (GET):
 http://localhost/get_data?type=story (all stories)
+http://localhost/get_data?type=story&story_id=1 (story by id)
 http://localhost/get_data?type=story&story_lat=31.80837&story_lon=35.152543&dist=1 (stories that their distance from (lat,lon) is less than dist kms
 
 Routes (GET):
