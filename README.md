@@ -5,7 +5,7 @@ The server serves get/post requests sent from the app/browser.
 
 Once a clean server is was deployed, it can start serve it's app.
 
-For the app see [Stories-Client](https://github.com/eviabs/Stories-Client)
+For the app see [Stories-Client](https://github.com/eviabs/Stories-Client).
 
 ## Getting Started
 
@@ -41,5 +41,5 @@ A clean-state server is now deployed.
 
 ## License
 
-This project is licensed under the MIT License
+This project is licensed under the MIT License.
 
