@@ -9,8 +9,9 @@ For the app see [Stories-Client](https://github.com/eviabs/Stories-Client).
 
 ## Getting Started
 
-The server is a node.js app that interacts with access db.
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+The server is a node.js app that interacts with access db. 
+At this moment, the server can run only in a **Windows** platform.
+These instructions will get you a copy of the project up and running on your local machine.
 
 ### Installing And Deployment
 
@@ -19,6 +20,8 @@ These instructions will get you a copy of the project up and running on your loc
 * Copy the server's content into a new directory (this includes all of the needed modules and server's files).
 
 * Rename the file *db/empty_db.accdb* to *db/db.accdb*.
+
+* Install [Microsoft Access Database Engine 2010](https://www.microsoft.com/en-us/download/details.aspx?id=13255) (*a reboot might be needed*)
 
 * Run the *index.js* file
 
