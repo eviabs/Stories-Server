@@ -236,7 +236,7 @@ module.exports = {
 
                 // if story_id query was used, refine the select statement with the desired id
                 var by_id = (req.query.story_id !== undefined) ? "WHERE t2.story_id=" + req.query.story_id : "";
-                sql_commad = "select t2.story_id as story_id, story_address, story_name, story_user_id , file_path as story_file_path, user_name as story_user_name, story_creation_date ,coord_latitude as story_coord_latitude ,coord_longitude as story_coord_longitude from (select * from (SELECT coords.coord_latitude, coords.coord_longitude, stories.story_id FROM (routes INNER JOIN coords ON routes.route_id = coords.[coord_route_id]) INNER JOIN stories ON routes.story_id = stories.story_id WHERE (((coords.coord_order)=1)))) t1 INNER JOIN (select * from (SELECT stories.story_id, stories.story_address, stories.story_name, stories.story_user_id, files.file_path, users.user_name, stories.story_creation_date, stories.story_image_file_id FROM files INNER JOIN (users INNER JOIN stories ON users.[user_id] = stories.[story_user_id]) ON files.[file_id] = stories.[story_image_file_id])) t2 on t1.story_id = t2.story_id " + by_id+"; ";
+                sql_commad = "select t2.story_id as story_id, story_address, story_name, story_user_id , file_path as story_file_path, user_name as story_user_name, story_creation_date ,coord_latitude as story_coord_latitude ,coord_longitude as story_coord_longitude from (select * from (SELECT coords.coord_latitude, coords.coord_longitude, stories.story_id FROM (routes INNER JOIN coords ON routes.route_id = coords.[coord_route_id]) INNER JOIN stories ON routes.story_id = stories.story_id WHERE (((coords.coord_order)=1)))) t1 INNER JOIN (select * from (SELECT stories.story_id, stories.story_address, stories.story_name, stories.story_user_id, files.file_path, users.user_name, stories.story_creation_date, stories.story_image_file_id FROM files INNER JOIN (users INNER JOIN stories ON users.[user_id] = stories.[story_user_id]) ON files.[file_id] = stories.[story_image_file_id])) t2 on t1.story_id = t2.story_id " + by_id + "; ";
 
                 run_sql_query(sql_commad, function (data) {
                     var stories = data.records;
@@ -326,7 +326,6 @@ module.exports = {
 
                         // sum up the ratings and count the items
                         for (var i = 0; i < data.records.length; ++i) {
-                            // console.log(data.records[i]);
                             ratings[data.records[i].rating_recording_id] = (ratings[data.records[i].rating_recording_id]) ? ratings[data.records[i].rating_recording_id] + data.records[i].rating_value : data.records[i].rating_value;
                             ratings_counts[data.records[i].rating_recording_id] = (ratings_counts[data.records[i].rating_recording_id]) ? ratings_counts[data.records[i].rating_recording_id] + 1 : 1;
 
@@ -340,9 +339,6 @@ module.exports = {
                                 recordings[i].recording_rating = -1;
                             }
                         }
-
-                        // console.log(ratings);
-                        // console.log(recordings);
 
                         res.header("Content-Type", "application/json; charset=utf-8");
                         res.end(JSON.stringify(recordings, null, 4));
@@ -423,8 +419,7 @@ module.exports = {
 
                             if (data.records.length !== 0) {
 
-                                if (rating_value >= 0 && rating_value <= 5)
-                                {
+                                if (rating_value >= 0 && rating_value <= 5) {
                                     run_insert_sql_query("ratings", ["rating_recording_id", "rating_user_id", "rating_value"], [rating_recording_id, rating_user_id, rating_value],
                                         function (data) {
 
@@ -482,7 +477,21 @@ module.exports = {
     },
 
     /**
-     * Used for teesting
+     * Gets a story object by its id. Used internally by the server.
+     *
+     * @param id
+     * @param callback
+     */
+    get_story: function (id, callback) {
+        var by_id = "WHERE t2.story_id=" + id;
+        sql_commad = "select t2.story_id as story_id, story_address, story_name, story_user_id , file_path as story_file_path, user_name as story_user_name, story_creation_date ,coord_latitude as story_coord_latitude ,coord_longitude as story_coord_longitude from (select * from (SELECT coords.coord_latitude, coords.coord_longitude, stories.story_id FROM (routes INNER JOIN coords ON routes.route_id = coords.[coord_route_id]) INNER JOIN stories ON routes.story_id = stories.story_id WHERE (((coords.coord_order)=1)))) t1 INNER JOIN (select * from (SELECT stories.story_id, stories.story_address, stories.story_name, stories.story_user_id, files.file_path, users.user_name, stories.story_creation_date, stories.story_image_file_id FROM files INNER JOIN (users INNER JOIN stories ON users.[user_id] = stories.[story_user_id]) ON files.[file_id] = stories.[story_image_file_id])) t2 on t1.story_id = t2.story_id " + by_id + "; ";
+
+        run_sql_query(sql_commad, function (data) {
+            callback(data.records[0]);
+        });
+    },
+    /**
+     * Used for testing
      * @param req
      * @param res
      */
@@ -664,6 +673,12 @@ function fill_tags(stories ,callback) {
     }
 }
 
+/**
+ * Insert tags into the db
+ * @param tags
+ * @param story_id
+ * @param callback
+ */
 function insert_tags(tags, story_id ,callback) {
 
     // counter for stories  that still need to get their tags
@@ -686,6 +701,12 @@ function insert_tags(tags, story_id ,callback) {
     }
 }
 
+/**
+ * Insert tags onto the relation tags-stories
+ * @param tags_ids
+ * @param story_id
+ * @param callback
+ */
 function insert_story_tags(tags_ids, story_id ,callback) {
 
     // counter for stories  that still need to get their tags

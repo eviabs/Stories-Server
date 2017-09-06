@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <title>סיפור מקומי</title>
+    <link rel="shortcut icon"type="image/x-icon" href="data:image/x-icon;,">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+
+        body {
+            font: 400 15px/1.8 gisha, sans-serif;
+            color: #777;
+        }
+        h3, h4 {
+            margin: 10px 0 30px 0;
+            letter-spacing: 10px;
+            font-size: 20px;
+            color: #111;
+        }
+        .container {
+            padding: 80px ;
+        }
+        .carousel-inner img {
+
+            width: 100%; /* Set width to 100% */
+            margin: auto;
+        }
+        .carousel-caption h3 {
+            color: #fff !important;
+        }
+        @media (max-width: 600px) {
+            .carousel-caption {
+                display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
+            }
+        }
+        .bg-1 {
+            background: #2d2d30;
+            color: #bdbdbd;
+        }
+        .bg-1 h3 {
+            color: #fff;
+        }
+        .bg-1 p {font-style: italic;}
+
+        .thumbnail {
+            background: #2d2d30;
+            color: #bdbdbd;
+
+            padding: 0 0 15px 0;
+            border: none;
+            border-radius: 0;
+        }
+        .thumbnail p {
+            margin-top: 15px;
+
+        }
+
+        .nav-tabs li a {
+            color: #777;
+        }
+
+        .navbar {
+            font-family: gisha, sans-serif;
+            margin-bottom: 0;
+            background-color: #2d2d30;
+            border: 0;
+            font-size: 11px !important;
+            letter-spacing: 4px;
+            opacity: 0.9;
+        }
+
+
+        .navbar-brand {
+            background: url(../site-logo.png) center / contain no-repeat;
+            width: 200px;
+            transform: translateX(-50%);
+            left: 50%;
+            position: absolute;
+        }
+        .navbar-brand-right {
+            padding: 0px;
+        }
+        .navbar-brand-right>img {
+            height: 100%;
+            padding: 5px;
+            width: auto;
+        }
+
+        .navbar li a, .navbar .navbar-brand {
+            color: #d5d5d5 !important;
+        }
+        .navbar-nav li a:hover {
+            color: #fff !important;
+        }
+        .navbar-nav li.active a {
+            color: #fff !important;
+            background-color: #29292c !important;
+        }
+        .navbar-default .navbar-toggle {
+            border-color: transparent;
+        }
+
+        .dropdown-menu li a {
+            color: #000 !important;
+        }
+        .dropdown-menu li a:hover {
+            background-color: red !important;
+        }
+        footer {
+            background-color: #2d2d30;
+            color: #f5f5f5;
+            padding: 32px;
+        }
+        footer a {
+            color: #f5f5f5;
+        }
+        footer a:hover {
+            color: #777;
+            text-decoration: none;
+        }
+        textarea {
+            resize: none;
+        }
+
+        .modal-header, h4, .close {
+            background-color: #333;
+            color: #fff !important;
+            text-align: center;
+            font-size: 30px;
+        }
+        .modal-header, .modal-body {
+            padding: 40px 50px;
+        }
+
+        .modal-body {
+            color: #2d2d30;
+        }
+
+        #story_modal .modal-body .download_app{
+            padding-top: 30px;
+            font-size: 16px;
+        }
+
+        #story_modal .modal-body p>img{
+            width: 20px;
+            height: 20px;
+            margin: 0 0 0 10px;
+        }
+
+        #story_modal .modal-body img{
+            max-width: 96%;
+            max-height: 48%;
+            margin: 10px 10px 0 0;
+          }
+
+        div.story_wrapper{
+            float:left; /* important */
+            position:relative; /* important(so we can absolutely position the description div */
+
+        }
+
+        div.story_wrapper img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        div.description{
+            position:absolute; /* absolute position (so we can position it where we want)*/
+            bottom:0px; /* position will be on bottom */
+            left:0px;
+            width:100%;
+
+            /* styling bellow */
+            background-color:black;
+            opacity:0.6; /* transparency */
+            filter:alpha(opacity=60); /* IE transparency */
+        }
+        p.description_content{
+            color:white;
+            padding: 0;
+            margin: 0;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
+
+<!-- Nav Bar -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#myPage"></a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#download">הורדה</a></li>
+                <li><a href="#demo">הדגמה</a></li>
+                <li><a href="#about">אודות</a></li>
+                <li><a href="#myPage">ראשי</a></li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- The  Main image -->
+<div class="carousel-inner">
+    <div class="item active">
+        <img src="../site-cover.jpg" alt="ירושלים">
+        <div class="carousel-caption">
+            <h3>ירושלים</h3>
+        </div>
+    </div>
+</div>
+
+<!-- About Container -->
+<div id="about" class="container text-center">
+    <h3>אודות</h3>
+    <p><em>אמנות וטכנולוגיה</em></p>
+    <p>
+
+        גרסה מחודשת של המשחק "סיפור בהמשכים" שמהווה פלטפורמה דיגיטלית ליצירת סיפורים אינטראקטיביים.
+
+    </p>
+    <br>
+    <br>
+    <p><em>יצירה משותפת</em></p>
+    <p>
+
+        הפלטפורמה מאפשרת לקבוצה של אנשים זרים לחבר יחדיו סיפור המורכב מקטעי קול שמוקלטים על ידי המשתתפים.
+
+    </p>
+
+
+    </p>
+    <br>
+    <br>
+    <p><em>זווית חדשה</em></p>
+    <p>
+
+        הסיפורים הם פרי דמיונם של המשתתפים, ובעלי זיקה למקום הפיזי.
+    </p>
+    <br>
+    <br>
+    <div class="row text-center">
+        <div class="col-sm-4">
+            <div class="thumbnail">
+                <img src="../demo1.jpg" alt="תמונה" width="400" height="300">
+                <p>טכנולוגיה בשירות האמנות</p>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="thumbnail">
+                <img src="../demo2.jpg" alt="תמונה" width="400" height="300">
+                <p>חוויה יוצאת דופן</p>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="thumbnail">
+                <img src="../demo3.jpg" alt=תמונה" width="400" height="300">
+                <p>יצירה משותפת</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Demonstration Container -->
+<div id="demo" class="bg-1">
+    <div class="container">
+        <h3 class="text-center">הדגמה</h3>
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" src="//www.youtube.com/embed/IZTa4ABy68Y"></iframe>
+        </div>
+    </div>
+</div>
+
+<!-- Download Container -->
+<div id="download" class="container text-center">
+    <h3>הצטרפו עכשיו</h3>
+    <p>
+
+        הורידו את האפליקציה למכשיר האנדרואיד שלכם והצטרפו אלינו.<br><br>
+        ניתן להוריד את האפליקציה ישירות מהאתר או דרך גוגל פליי.<br><br>
+        בנוסף, ניתן לצפות בקוד המקור של האפליקציה ולהורידו.
+
+    </p>
+    <br>
+    <div class="row">
+
+        <div class="col-xs-4 col-ms-4">
+            <a href="https://github.com/eviabs/Stories-Client">
+                <img src="../git.png" alt="גיטהאב" width="45">
+            </a>
+        </div>
+
+        <div class="col-xs-4 col-ms-4">
+            <a href="../stories.apk">
+                <img src="../download.png" alt="הורדה ישירה" width="50">
+            </a>
+        </div>
+
+
+        <div class="col-xs-4 col-ms-4">
+            <a href="../stories.apk">
+                <img src="../play-store.png" alt="גוגל פליי" width="45">
+            </a>
+        </div>
+
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="text-center">
+    <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="למעלה">
+        <span class="glyphicon glyphicon-chevron-up"></span>
+    </a><br><br>
+    <p>סיפור מקומי  ●  <a href="#" data-toggle="modal" data-target="#myModal" title="בקר באתר">רשימת תודות</a></p>
+
+
+    <!-- Modal - Story -->
+    <div class="modal fade" id="story_modal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header" style="padding: 0 0">
+                    <div class='story_wrapper'>
+                        <img id = "story_img" src='' />
+                        <div class='description'>
+                            <p id="story_title" class='description_content'></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <p id="story_user"><img src="../icons8_user_96.png"></p>
+                    <p id="story_date"><img src="../icons8_calendar_96.png"></p>
+                    <p id="story_address"><img src="../directional_sign.png"></p>
+                    <img id="story_location" src='' />
+                    <p class="download_app"><strong>רוצים לחוות את הסיפור? </strong> הורידו את האפליקציה כעת.</p>
+                  </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" data-dismiss="modal" onclick="location.href='#download'">
+                        <span class="glyphicon"></span> הורדה
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script that opens the story modal if a story is available -->
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var story = <%- (typeof story != "undefined" ? JSON.stringify(story) : "") %>;
+            if (story !== "undefined") {
+                $("#story_img").attr('src', "/get_file?file_name="+ story.story_file_path +"&file_type=image");
+                $("#story_title").text(story.story_name);
+
+                story_address = "ישראל"
+                try {
+                    var address = story.story_address.split(";");
+                    story_address = address[1] + " " + address[0] + ", " + address[2] + ", " + address[3];
+                } catch (e) {}
+
+                $("#story_address").append(story_address);
+                $("#story_user").append(story.story_user_name);
+                $("#story_date").append(new Date(story.story_creation_date).toLocaleDateString());
+
+                $("#story_location").attr('src', "https://maps.googleapis.com/maps/api/staticmap?autoscale=false&size=" + "600x300" +"&maptype=roadmap&format=jpg&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:%7C" + story.story_coord_latitude +",+" + story.story_coord_longitude + "&language=iw");
+
+                $("#story_modal").modal('show');
+            }
+        });
+    </script>
+
+    <!-- Modal - Thanks -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4>תודות</h4><span class="glyphicon glyphicon-thumbs-up"></span>
+                </div>
+                <div class="modal-body">
+                    <p><strong>יעל וקסלר </strong> סיוע בפיתוח הרעיון</p>
+                    <p><strong>בית הספר לאמנויות המילה </strong> כתיבת סיפורים</p>
+                    <p><strong>איתמר בן שושן </strong> עיצוב האפליקציה</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" data-dismiss="modal">
+                        <span class="glyphicon"></span> אישור
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer/>
+
+    <script>
+
+        // Set icon
+
+        function getFavIcon() {
+            return "iVBORw0KGgoAAAANSUhEUgAAATkAAAE5CAMAAADcP6fDAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAA" +
+                "A3FpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj" +
+                "8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4" +
+                "MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLz" +
+                "IyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5j" +
+                "b20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bW" +
+                "xuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo4YTM3ZTI4" +
+                "Ni00ZmIxLTFmNDAtYjM1ZS0wY2YxNDgyZjdmZTkiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QTg3NDVCRDM2MzYyMTFFN0E5NUNCMj" +
+                "I0RDM5NTA2OTYiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QTg3NDVCRDI2MzYyMTFFN0E5NUNCMjI0RDM5NTA2OTYiIHhtcDpDcmVh" +
+                "dG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bX" +
+                "AuaWlkOjI1YWM4YTdiLTBlOTktNzg0Yy04OTVkLTJhNjhkZTU0N2I4MiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4YTM3ZTI4Ni00" +
+                "ZmIxLTFmNDAtYjM1ZS0wY2YxNDgyZjdmZTkiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2" +
+                "tldCBlbmQ9InIiPz698QDpAAABgFBMVEWcoaT8/PzxllnDw8P//PqeoKHxlFbp6emurq7Jycntey7++vfi4uK6rKKcnJyboKTyoWmmpqb6" +
+                "2cP09PSloZ/50LS9vb3w8PD87OD3xKHyn2bt7e324dP75tnExMTu1ML6+vq1tbX73svWvKvz3MvGsqTHsaPFsqbc3Nz86dyloqDLtqiZoq" +
+                "jygjXCtKv4zrD14dSzs7P66t/xmV2Wo6yen6DFsqTr5uL859maoaa3uLm8trLVvKzQuajn5+e3t7e4uLibm5v5+fnu7u7b29uioqKwsLCj" +
+                "o6P0sILvhj/uhDzzp3OxsbHKysr1uY/+9/Kampr738386t7m5uaboqbv7+/a2tr74c/viUTGsaT1soW2tragn5+5ubmkpKScoqXm5+j74t" +
+                "L77OP63Mfugzv0rX2io6PynGL+/v787+b1tov66+HozLnw18X/+/mio6TW1tbz49i6urqhoaGgoaP0r4Dw2Mf618D36+LHx8f86t3jpn2g" +
+                "oKDugTefn5////+hcS2/AAAAgHRSTlP///////////////////////////////////////////////////////////////////////////" +
+                "//////////////////////////////////////////////////////////////////////////////////////////////ADgFS2cAACLc" +
+                "SURBVHja7F2Jf9vWkSZNyXEiWU6ykZOtXXndxMm6cTdNs97GbZd4Ni/ZZmo7PpLUiZOmR9rt3vcxevzXl8C75htQAkg8QBIk/GwdFAmCH9" +
+                "4xM9/MN53Z6bHa0TmF4BS5U+ROkVvx+OPHv/mlPP7844/XTpE74PjHH3zw3Xd7ryw8zn73ux98fIrcouP6o90zewcf917dvn6KHB5r26/e" +
+                "2ytzHB3wjgRy1wtHG4C3+2jtFDmD2729JY8z22unyK2A29HArnMscUuP+9dPMHJr2yvjlq13aycVudfP7FU7DnXKdo7pgDv8KXtoyF2/vx" +
+                "fjuPf6SUPu9Xt7cY5DW+06x3em+hm7dnKQW7u/F/M4nMWuc/yBO6TFrtMC4A4Huk4bgDsU6DqtAO4woOu0A7hDgK7TEuDm0L3VZuQ26gOu" +
+                "cbuuWeS29+o87m+0FrnX79aK3N5uW5FbO1svcHt3X28nckstcvdedccyHu7ZjVYiV3qRO7P76FFwRa8/elSeGtttI3Jv3S052BYEetfKgt" +
+                "fgfO0crbl6b/d6tcBUc/O1c6Tm6oHxonI82W7bkNsoMdsKCZkyEfi7n7YMue0oPsBaiWG32y7kPr1bvMKVcp6K+Yu7/9Uq5AqHXOlQRzF0" +
+                "32sTcoWr3BLWRCF0n3/aIuQKh9z2Mt7vvSOx0jWC3IMzUaMcRYGDZrbXRpD7LHJkbfcoDLpGkPtVwRhZNpq7URB0ObPREuSKTJLtpc9YNF" +
+                "8/aAlyH8QfIbuHb5g0gdz3Yg+5wmH80YNWIPfp5zUsSgWD7rNWIPdBHRthwe34VSuQ+14txtfBZz3zoAXIPfioltFRMJIftQC539SzIhVM" +
+                "1w9agNzBDsTnH9ezCHzUAuR+V5PltXvIFl39yH1Uk4v560NmcupH7uBZ9euVz/uDA8/7yvePPXIbv61pDzx4z37lf489cg9eqct6ePVA5H" +
+                "5zityKyP3dKXIrIvfLU+ROkTtF7hS5445cgVXSeuRqs4Rbj1xd3lf7kavL428/cnVFmdqP3MqRzYJQ8wlAbtVoekHGRfu9r5UzGQoyLlrg" +
+                "8RdEmVYjqoszLl65fuyRm323V8egK0pn+u23xx+53+3VMOgK847bwEM82qth0BUNuVZwX9//PP6gK66EagPfWpTKtErmYWFFyefX24Bc4c" +
+                "xauhi6uCylgQS6BpD7rPBzLun3lyjN/qAVyD0oLvlaqrjyreIKpiZKIprI2SxR87WE2kgZ4Y62ZLuWmK7loSul+PcfLUHuwZl40JVS/Guk" +
+                "lKSReohSVcFlig1LFlb/atYW5DbKFeEXKvCV1eb8rDXIlTDpSgy70hKTDSQJN4bcp2XFcfYvSF/bLi29sT1rD3JFcUgUK1kA3vXyuDVT9d" +
+                "UYcp/tLXEI8NYebS8llNNQIX9DyD1YUuj7TKortP3o0e7825IvbUo84ghpRxwzQbCjpFcSRw+sbXoljQ261mnkNDXoGhtyDWqBbbdryDWI" +
+                "XCODrrkhdySV+47FkGtULfJsm4ZcowqldUu7Nivu2qgq7m7NwJ3ZaCtyn9Y86LZnbUWu5kF3tr0a1vVaJnebVetvWKt/uyXbQ/PI1SjW36" +
+                "RFcgjIldVjPvpDrvluLrut2B4OA7maNom7re+DU9cmsTtrP3K1bBJnNk4AcrVsEtuzk4BcDZvE/Y2TgVz0cNPdt2YnA7no4abd2UlBLvJ8" +
+                "PYy5eljIRZ2vhzJXD63bcsz5uj07SchFnK9nN04WctHm693Dao5+aF3lY83X7dlJQy7SfL2/cfKQizJfD2lfPVzkoszX7dkJQG7tx5d//J" +
+                "PI8Sacq/l3ON7I/eTHly+//d61a+dvdW79/k9R401nIRd74/0bF5788NoX1967cvny5bVji9yg3+8Pk+RnP3/jSWd+XLjQ0Vo/eRvjTfdi" +
+                "GiRXbszfYf1CJzsunFcq6c2vod89Jsh104vtqSSZkE4PunmTSM//pf9p/cU7EZc6dPQ3zs/vTfqm5r3WSZsrmM4hHM4vanBEkTNDTCXj+V" +
+                "W7Qxvsso9iPpG+cH4jmmkinIcrT8ihps2bZxfgroVGkQdhJ8YQS5QaaXeP3QWbf/Yx/5meXJlFWurEXP12sk6aXYC/nvQ7kf8D6XGSxBiE" +
+                "nQpDTJkhxi7K3OoML4Oc/Sj24XQdevGnSKF1NEg23u/4e0TE75Yb8eSGP9k/TeYIVhiEneUHWU/NhxjpMMT8vCQzzIhfvUfOXvgt3CRWNk" +
+                "2E83Dlxpd8dmqYufa67DB0WLqLpPkgVMOlh+ByyHWHY39NpPlNDreW+J/9h/DPvzn5zxjzFQ2S2fd/7+5YmKZsjaWAmWY3WpOfLkSj3qBG" +
+                "5Ib+osIW4G8nhUv0WPmhSV+uG3Oh89d/KyzksxEiJH//78b26XRgQ8K7yxZh0uyv7gXnurUhd2miYQSRh80+aPcFhp7WFrC5jXrtvbfnJu" +
+                "rljQhe2PYie/tKZm9f6GQm3U22OXHQGJR8QcmOXm3IvUSwd7GlRMyJAOyX6+evZUb9AX7RdsQIydwDMy7LGzfDXYX1OMyQMEHM3abntSG3" +
+                "o4nNATa6wq7l/27Np29+WuwGLb3UnS3hWv33N273D/eaLR9+Pof1WNNrl+pC7qrmG77cK8yFrGItLbnULRUGZhanZiYJ2H4e2Md1Iaf4Gh" +
+                "ZMuPRyJipROysbR8stdauFlowJmiRT3DTc1+yz9OtCLuGD3vw0VlEM8u3mwsDZINyZO4rO7bGGTPpjbcgp9xb0QiVRncAllrqzseJHzg+a" +
+                "BnOqxjHnHKy/jB73LAvdvehcV/dDv/fWh5wzQfRL0cNdJWN1dZCEX7k9t851zoVA+vGvv9wuUUfyTeIN47qRm3+pAblSsbpaSMLEG1u17q" +
+                "1U15grs0vcq4UkVD6IV+Pe6kKsdSBXbBDXlAmReMv0pXjIdVNKYW77zG3w+f/XfJS8FuQKxeVqYlcTPyCm7qOmx2YV5N4cW//KB7ZoecMn" +
+                "55CnMY0vrl279t4v1pbaJeQit/ELd6I0BrM61aqcD0487q8nL6+OXPcrFzwiFqvUK8xWQ7p+8e75J19bDjH9euP9jSV2ifsS5ys3Ol9nMa" +
+                "XsdLd++O4XBsK1lcYcev/ZLy+tjNyd20Qao7vW7yqJXLf/zU/nI+yLd9+4ZcN0nh3Iru/GlfK7RG53+PbFuubxh3WD4YUn59+99t6Vf/mm" +
+                "tEeYaAz9u6F3+38qIMdiz4zaKtyEBpZ0HWt9Mxte61+ix2uH7k3Bvx7gS+R8h5SzyUfH03cw0WGiSUkXUUEM2bNQdPvlKmNOByKBkVr7zN" +
+                "au4fU9Tc2i6yHuyRko3Tm/Uc6XyG+rb98AKiQgCNFWT9H09g9LJDowEowp07c/qYQcfGhHLgjk0iG2kw6xEGUPrE64l0Q8OGXurciX2HeX" +
+                "yPkO77xY9yQbMYqXb2WaQZJ+naRmwjA3CBPOdzLQq4050iJcb0afR27QS4cYRqyJBdoD1yqIRPttffJOmYhTznf49p/WA8+mOY/K44dsqY" +
+                "E9YJwGE7uwzonbkP5cacxpPnoYq2SR6+5MKMeKeJ6aLWo8XYIRYil1/ftvi3eJXGRp4/0Lmg0qtqIgUcJuNl8Os+dd7PLgGfJh2QNbL1dC" +
+                "zlxTmtaiktf8ZVrkhpTj0D1rwqYMseEHrMD8+PLrnGmS2yXuLVjkviSI45OnLbk14BdpTUBGmAcv3uFjLsveSbKPabG9XQ0585GNZfOVvy" +
+                "d9yyLCUsw4MZlO4u7nTZeklX752vyXBGzODcsD9w+dJ8aQM3ZI+vOFTkcLRpA8IReSD9jG7u01P1u1/5jZiysip1mYWXl0zO+P2VKP450g" +
+                "iyklXS+k5uqtN64ZDpEfV97/44FuWH5b/eP7v8BTpDzh3Mq2t2WdgKUJm5tzFByCOyyQoUMISMVDzlkhyt8whxzcUy33kvRYT8fDrdQ4fX" +
+                "sJD4lDVzYkt2bI6i/e/eGT9C5hHg5LOQmPfDgLH0uHQEZih2D12ep3hMRfi52trxEwrmBUpY+N1M9+/jdXVnCImG2yfEguc/X+6mcZ1UrM" +
+                "6eYpfdnlPoP4nDcZEgt6NeTsggrIBavkOXErKngJ0+qM2O5+3upyLNdQZSwXprrY48VTmK18UTJWSTUfgntbgTW0yG2OIPVlpIytHoMRs7" +
+                "ZJFKbLOIM228+nhNEQyVCPXGLHQFXksrPgOhc8/sHOyBiWKnoqbmabxGW6upYnnHuHRNNhsOecFdBnRFVF7wvJb28yMu9rUFv699rZH/2o" +
+                "pnI4vOjELYFsnatszzl/wCLnzaJ6YsLSNf2/d5p4m/RjgZmq7Ais7PGzBcDbaI0g19ShBDEVY2/dyiNH7UMu8baKX+eoulUCs1N5P6p9yL" +
+                "Gwo7KeRsVYCV8AkpXSpfZZod0xqHyGqjuU8swUTK3q3pdGv5X0qqyhCYAqm4DllsyJNQLLffyuDaKOuFs/TZIqhmTigzncPSe9VT0+528G" +
+                "kV5+h7CmfBYA5XnNxBzzLBOvVzD+Bv2hyRuEohBivoEtbVhyIHvXiPsQVdc5V4qBm0455LIhNgdsygJ2PHJLEA/KPv/oAHq42xthNVQ4bQ" +
+                "jnOgjTLOXSKaTKh605ctU8/ofSnnOOab9giCWh2jBEu0lG5XmZk4V0sh903YsQ8sBUZU0QEWFvVqbSMPE3NZitVZG77W5un92cffbWzDk0" +
+                "Q4yH68Ks0jzKHio6iA8grfcp55gDJ4OmwCxhmrmLegVIRwcUeSU+JobG11bVvZVZJT7I2s8zhSOoNeSVkkRQ94fDhDAEz+gBOIYEVAeHC6" +
+                "qBWEkL1E75S1qQ2Jz4QomwQxDF8L5I7q2Bb+3ujKFKQ3N6NXwwIuDBgKwKkWML36JKmM2JoMo1X+JCINqXUDH82PlZhgdbUpUgCRwvUXm2" +
+                "EkaZOHJPx2y50lCuSRiE5Rw8C8HrBfG9yYJ6jqt8FBPfmomglIbfQ1kWhMHEsKQmGg38xL6ocpSJmFsisiN6nm0K6zLfMokzmUAukkZelk" +
+                "WWFyMX+C05SdmuTax4j1k9Il7tZvLk6QyMLb6cx2CqMeRHnOq4NOHLCF+CRHmaKFqbpjlqyuSpqTFpLOTZWXAlzyQbM87y3Exy39yyplC/" +
+                "FwhiLAjWxIuWs+PZLPAOPD4XwSq57e4wGDoeuccaC0kh2yZsEW50jOdg5fc3G24cuSG7cIfItlYTd04W5DdYoQo1dYsbMRZW7MXsgavg8c" +
+                "PHjOB98Xy5xK9FgTUMqxWOtWBojNLhNSyySgcGvvHOPlbJznTuIRS5Gaa+JkuigsUUmVg/GK8yvpXbc/ZFMbkvfw/tbH2RI6cZ5T/3JrNS" +
+                "sCU8oYFH985fuMf+LKBS3iu1tpLyKS+E/K/5+Rm3SnKztTr3FfZWJUii2Q6UUhvURsr6jpUiGJv/7H5Q1cmbJCtRYnknZtY6ozshweBEYQ" +
+                "2BsUm8Pekyci6GmuBIYhb2eGxthjfpajzyJjPYvTEzZVYJDBBXH1FxzGk8pch27WZBkBpUfPo02jS3RkU9r8/1S3pd8FuZmars+NyqnB1B" +
+                "wrhugsHpzy3iN7MtNWmCwRFMNVXfW90mH2IlFSKbSyJHF/vzxYCaQQ68L2v0VedbwRIGjr9W5OxeWD9yiY8PcAanMg/BkVPe82sGuez6VT" +
+                "PIkUif0VSZb8XAFbxFncj5YFQDyGkMQzokI1rCyjvvqyNnSKvMSk1dz/2Il743qpN9jTTj95qdvYoxlGisDLb5czGQk2HmFWar1R1I7Ske" +
+                "TrOBjblHu4P49X0kIUHMelkQFYJZ2S9p2UiymgGeeO+iD5bx7eoxYeJJPssh5xT9plzmCgVDPIUzZopcfR8lSjz2Qys6ArSNlLDSaWLVck" +
+                "5f4iM8sENE4CE0Yw1LZkd413uiMQAppcEwu1xrp8jV93FRZU3uMSqMaOQk8HQ6G4RlZSITwqQPV81UdcwRCavkoDHnwj3jnIYUAb3Ko5RC" +
+                "zsx4k30/pxPr5hHIjyFxyAcv3iSdUpHqYBpbaWHPRfRbuSW8iG/1uqQjqBLF4lhMXifOHrIyBTI8RN8Pogy5Z0L/bEH0ktOTPNk7MEbTfT" +
+                "xrJeNzFC3KRMjg8Iq5biY3MwZhMuLTCoTf5LIOVWouzJ5F0/se3gy554iLFAxkBS0oXRUYHcZxj7Lw12DfvVXFyU3XmGFN6PFvjjUUwpAo" +
+                "dGThRSSriYW5MbqnM12pvobZqoBPhQpezjrgDSSuuIiMUaZx2AXkRLZr5VpD8BkUoX1nMqxlyjfBysZHAdR+hQlHyB165MybZTvEVeT1sU" +
+                "pkwV9YHQRxahJi673ZbCExZStJKvMQxGMlmLN555zY0Ejnf+RzkRPyxHVWYYu4kyHnnp1Yko1yFRcEIfJcXStolWIJqzmZ5748j97nfmxV" +
+                "7ovEKTUBD0Gwy7ESTbGB+rk7Ua7S2RxZgG/EnzKcOeTII/d05DId0i+Op3enSAx5owEqzl1i4aEf7j0Rn0PkKEbFnDil2yH6UIATqv3EBu" +
+                "iy5PbPz0rzu1Ix58ygc1aJXQSUJfnNiaYpZN39LMgeuwti6dCkcxvuh5hXQmCVxKj7IqTTQoz4MU+u0SJ1yVn0ZoQNyrgb8216Z+A9fjuC" +
+                "rMc/GGYn6pb1WtQYCnOhGtINzZ19OH77mog+hBLaEek6x4h0toLtU/e9TKzE3YhVYyVM+574DWbz+CW053L5c59U3CEwWArcl5tDfjkr0B" +
+                "pYLspkVobKkU2r0KfGMofFVQYrwoTKhCJw/C5gAUEEFmXanGa/pw5OMoxJ4/T9VhwtJmx9aZNO4BdU77cSgcdfmYfApO185mG3anDsgJjw" +
+                "gihTNPqrDz4ESXLU6JVUVt2QxcZN1EP0/drUAIMj1CKTKLlMWkNlMJbQ1oucXX2aQi6XBRahMljwENQQcnYXbAQ5ZKqtM1LZb9WyOKURvt" +
+                "VnEDbCtxJ6XzFyNgkTy7CCruoyPSjYIbJ7rw7eLCNs50rQyC5GHLFiTqZLrWqcptmWI8u6qMXJdX2/aif5cwyzjE9lFA7GhkSrYBN5HoLw" +
+                "Y1au4ydehLcS92Vj7MmYIDDEE+9onPBgo3WJCe251L0d82oAlkadUWjlXb08clKuoNqY29Ki2JiWsUqC/8M74QTWQRTlUJbJ2kXuy69zaf" +
+                "B5JEsGQtgDxNrSspElBqHytzGyx69JaOQU7a1OFX9MIqatpeYQQ8+XG20C9+XWuc0pYYyPlwtgpyX2NmNLZA9KrXNEmOwWoUoT99b91rlA" +
+                "RntMuN5VTo1Nk0gsNsiYlMO+f7bhvs6xhEupTEYQYxf9UrRr87G/d+jTn+Nm9aOoAqoLIVM49QqarBwOZOiw9VDgqYi3CzN5z32PhLLcl8" +
+                "7J/mFyN3RpgQqdEEtfvBIuqCSJkT+nxSl1LmdzhHMFCBYCxkETIkdahHCz71lPlcC3Zsg9JwCMdK6UiaAhG2ce8g2EsmTm4SAw1S4cjQOk" +
+                "uuYh8QRa4L5cnnBQ7iG9SOeQZMMoZMDCsxn35Wan474IC7+4SqS4Y6EGlPIjMQTVR5vM+4LiBdJx6r4WZOSQr17iTdx4LBguFWVTQ50R8j" +
+                "zuq+VbnbmRGO4LyVniLDgJ+TvsQ8bLrrHrzbk7uM4RxIQ1VavSBB8iEWkEl14AKSLFXHOoMc5wamxgU6KOzErPrXPm2Xado1Ce4ho7KlO8" +
+                "NCIh2suKySh0ppT1ONrLpCeEBHyiI1jCmOSjfGmQ5SFoIVuIPA7nKaY2xs42OVtQPPUnMVye3yHs3nrRD6eJzBIx4bae62yDre6AzCVR/d" +
+                "7jfCvGhKurbiwyrhlryBc4YXWwtX+SFDZm6qbb8ySUnfb9XDaWcFrFr2l6cPlSIG+wmjNUQjK2d358OFu48SX2BTFU1IRIFs5Wfh+RX58u" +
+                "WVwy6PP8OXsWxWAp6Zh2+SDUoiUqu8BnGCsBQr6y96WFFhhmge2AGoSbD1OlKvT+4gwOVczq996M0Kwwd9px/IpI5jJlz6i+Q4g8Yba3Ph" +
+                "2zHJJyNYXlGRx7O2LE5wKNzRZlb5Uki7kvqrxDCFcYfIhuL6Fzy9cUluO+zICOGtn0URs93RlwHwJLx80+XL2+lVsl+XqIS7Xo9nkeop6Y" +
+                "cJdPDCV6LymnOB9Br0QfgFxN0XS/KjVSD0E8f07Fma1YDyEUSuvkIZxBWD9yvsieIlZpIu+gaJU2dquvc41VL+XE4nRk5BJvlTeBnL3+Rp" +
+                "AjytfxV5qtD90OB+pCFWcriO7tZ/YF70vty3rFEu+TclNR8oSxplr5QNAKyHmNsJFG7iULN4riJRdNzyE3MI1DQxcR6x9MVbKypHEiOH5f" +
+                "g1ORqSbQyIHYSekhtjM3kqc8RseDPw7GcRKKl0z+HPNbjWvrwqjcB9WQ5T5ZQUZbimBa9UiKYc+toO3K9aLRYeRUC6RAZ7FaS371vaNukR" +
+                "vsjLl2FelF9QAsPrKE5kfo5gIGP0VlcAgqS/YbYj1bvwTtZXgEXWNoBZgKo5ETOH6DnFFox5qHEMxihJhsQDVKVFENYuIjKMLjr+63Qrbr" +
+                "4i6kLjEykyTXWCAB1REgNpdP7HdlCqIe4ukEw0YsmZuLUJKGFH4m3UOZuPtiBjHRYiO0V1g9O0JDrEQgN3Baq3wcgawayTGncw0buEAaje" +
+                "9wH8LWQzBdNvYVaiFEgQ+Sk+FnF5jo8tlKWiSBxNBNB+REDc5sU4146748TSJnkSwwEaVI2Ykes8im4yE0MdZGypSSqKVbUNlCUK6TbUib" +
+                "gJwI4FbPyCHJ8YMlvDkSpHAgAgmpLZbDDkp7vGuTe4Wv+wp763PZbger8YD9gG59WJDGORIafTLj8blcf4iYe6vys49n9WOJVVh8SJBRGv" +
+                "hkEhKJYeq5WkP7mDKzFYkY4vXFvL5dBxk1wm5QICRrdGSf8owc0UFo/vvDTyojp+XeSp7BIVFCiPqrotmRee44U9zrubKjBJutaNpxljCr" +
+                "+3o6AjWviVFPGFreIeijEmq5EdYia6Hs+Yx7/EJ+qnJnjRxyfMz1SVwS6iFjjtHIyTx0FxsyEzvPLnZZXglaJSbJZrhof7TK4moMdcK4FE" +
+                "A9NvHqJcrV8VfWK8lFNrXo9yU7zOVbMZbVCBsYq8ZZwn5fdtVLPWNVdMsY4KZrEDL7OR1VXzEn0wKjRDaJRMks6DKFKs2cqXvAEFsiVlKB" +
+                "wbFdg7IaRJHv6JFj1Uuy91KE7nxaizp+roo7hC3MdkBMYnQT6vsVvWKUyakfqokwz4n1NcQUrSgx4by6EGRYGxV4oxW/hMR7SdaQotbg2D" +
+                "7GwS28yKrRicsmqzh+K1E+WMqiTIOhSoY11C/1/SCOzeDYlVD0b4WGcPau3Y6n3Ccl7mrlIdycaoKHEHyr3U2qKyAI0VNqrO6LmuK+CHov" +
+                "2b01SpSJhG56M6yhXhATrgs5mYIfi2+V2a7UDHKyHqI2BgcFpn0NTsX4HAmPv6HZ6o3ppKExh9kRcXLTeWcNqS5U/2xtBDmLFRLyEeJzcp" +
+                "1rhuO3jl/9yCmt81ZJBKZadtbQzYw5H3lrYswJ+SnnQ1SvbxVtiBvbIbI51AhyRKJ4QVePleS5r2YsYR/rO4RcJhsfq67cRzldpqbGXDM+" +
+                "hC9n01CNHkEtkqTOZlMZOaQb0bCWapFROqVRXrmPmskC8+RBI8iJHnM6At8qKkkc4dpI5qFZfRrxvkR/iBjIYZKPLtHXMN4OQY1ZwlILLI" +
+                "oPgWmgqKrWnh1Cy97olbkvglrDxDPOTWW7NqJXklBOiLV6TFiqqDXnfXnurClLWOdMiIhqkb7DdzPIUYHSS8wdAooXKIp2hCwUaAo5n3vX" +
+                "UH8IDYWB2VtXrvtigStRtl3/DtGQLtMCBYTKuun59KgGrZKG1jnlCWPeGploK+o6V9GeG7jkBdOTJLQl6eZn68Lc9NDzzJ4jPVnFolAl9t" +
+                "ZoGta5PjjLr3OeaB9hrX1IPxknrK2GRU5rEU3PCq/HIZ1LYwvsFWWZvM6m0J+LUFPNHbrl4nMuw2hKXCcBhaWJ6zL5YnPfQciNuRS1sdTY" +
+                "EbpCFsVUlmkZvdTE5fCS6OYSz+NXVM6HsDR6okagzkxYQIKZbi5mOjISLH2vSZRkJ+xNKZdOSyCwTFx+yDxtalM2BmV2CIJuy1EyclAaQB" +
+                "+Q1e96Ik0xrRm7hixIyWItlE2OyvDNSz4H71//0O+NYVBxLTHClE/ZocR1kD1QoC7R+QYi6bm2Kmu7SrlYuc55Mb0RtvGWNR+QLsy0R0CZ" +
+                "ynyEFx/69r6vTTWxhrU66N6w3tVcnVoLuQ/Wt2SqFq2EyqdKolR3BI8fQ35eN9vWJfHlh7DZNubtEijTa9ZQNfSXzonb5DAnDR0ANGpmwd" +
+                "qnZcKwWzRQG+wr/0I0ISIy1YmH5eXUJBjxLkqipTfKDEFuOHHhM78455TPtBRd09AzXkNfDsoJjWHJDl9l2YM0nkO486FQevF9cCpnu6Ir" +
+                "vGB1JmjaI9NdoQGT5tJmPFMcU/K5+hrJ9HbZuV72sZLVIwsaQGl5I/LFqDGi6SjkQVyKDzSjND4GtQk8hzg7xllHeUyiJFF/gmm90LMjy8" +
+                "pP7MgPYi78AoXdApnrDEG2IsTU6nfLjuhTTbk2ZWLxgjIPNghcurVdYbquLYma8AqTvFga1wQcYytDL8ukJqLCKfQpIt7zhXXGwWIxkjtE" +
+                "Zb6Va+SA5lKouCTCRmXY3idrVnawg5Q2LByz1l3QJ8mbHZM0QbR7oGuXjmTvE+Tbyue3e45nTAUEKJl9zvrecKEy0a0qFMmMlVoi3Xpu76" +
+                "oJTiK+Lo6ZTGGhIZ5t+iMmCpgfYgtaYD1myFVWUeMe/lAU+JLmpSTkzY5UYXlFH3wwVBOCtnHmU057q5zM1uhMYQIQOh5+d5+/yR1GVFVm" +
+                "qnkk8yXZkIqg6IqmURrLD3pT4YL4SusVD6c6m3mDpEHGkrVnouezmDFhDX1vCLYwC9ooWb52vmjajsJdGQ+jJb4zpWM0WMzseRZiJxE4fo" +
+                "gBb064JTtOohSN7DPw7E45Htag+wSNXby16AoklI6BHHhfqQ5BQv9W1NUzFnbj+Wge1vwmNkw65W/lKL6tCHrCoP11adbQ0a1lNBe/lctE" +
+                "jKCR00Du0lE6IvVvbSi79UghF0PDGh26kzPmYmn1N8ASHqXDSQFV0nbFrlUnaZ2rvrfSyUMuidRV/uTtEFG6ysfrUnW81rkIeSWcsTlJVk" +
+                "mEvdU4EdPEHcpldChl+xQo020g+9Vni7hnK/Zd2T/ZbBB3Fjgve5EKf7MnN39S7hkq/MQfcic2rzIvtL8r+BjKv6dSSfg0yWuRFBC0iJFr" +
+                "kHzTQmeJNPYg16zbAQ/oQIMRUFVivXFI9GyRAiSaoN2J6GeQE7sj2RiFxHkgdSNGVj/lWmNr2ecsJz/IpeGI6TFJTnRBS44F5Cn0YKcFLN" +
+                "bC3znlj61SKNcBPK+EFcGH2Fd0ifI8a67VAdfrA+kh+MjEZPzYC70yFvHEB2j6sB9UbLwGLSvCLA3ssUaaRBufyp1vCchPgnY/C8nSPJdM" +
+                "2B+EXzrOfJ2bgCyNQorbITeNxCxBIoUkcHIdh0DrlKL0XgK6Laf6xaW3NGHnrfywZP1UWK6HvNkhoYJkMzRgnWHs6JxsIGdUYXYvalqUY8" +
+                "moul4JymDyXA4c/5q1l+FEE+k8ycxV/UjQxQR0qaZFAoq42Obl5ohlOGE79AVqeMRF8Hg2TKUdonuOjQzC3m4kl1WgqkgCB8lvJP7xXACR" +
+                "ScJ3RoJTQP4D3/hzrZcIcSWpG6ghSSO85cPNlZEzapBiI+R3hZg6rc4tKmLbhaUktysStt3jqVAUWF3eHY3nQcFmo4F2hOuGpqUESWk5xT" +
+                "X9VXd15GaXelf1bXNsPbztj4fZv+wH9/CW/c+esuCF7ilb/KnwbPbrQ/+Kh+xH8/KH/GwLTrHFfngYvon3ES/nfz139dnBFEinOER/50Qe" +
+                "fyjCpTM7PVY7TpE7Ra7p4/8FGAAJpQF3oPI7pQAAAABJRU5ErkJggg==";
+        }
+
+        var docHead = document.getElementsByTagName('head')[0];
+        var newLink = document.createElement('link');
+        newLink.rel = 'shortcut icon';
+        newLink.href = 'data:image/png;base64,'+getFavIcon();
+        docHead.appendChild(newLink);
+
+        // Regular jquery scripts
+        $(document).ready(function(){
+            // Initialize Tooltip
+            $('[data-toggle="tooltip"]').tooltip();
+
+            // Add smooth scrolling to all links in navbar + footer link
+            $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+
+                // Make sure this.hash has a value before overriding default behavior
+                if (this.hash !== "") {
+
+                    // Prevent default anchor click behavior
+                    event.preventDefault();
+
+                    // Store hash
+                    var hash = this.hash;
+
+                    // Using jQuery's animate() method to add smooth page scroll
+                    // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 900, function(){
+
+                        // Add hash (#) to URL when done scrolling (default click behavior)
+                        window.location.hash = hash;
+                    });
+                } // End if
+            });
+        })
+    </script>
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-102326863-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+</body>
+</html>

@@ -4,13 +4,13 @@
 
 
 var express = require('express');
+var ejs = require('ejs');
 var server = require('./server.js');
 var app = express();
 
 app.set('port', (process.env.PORT || 80));
-
-app.set('views', __dirname + '/views');
-app.engine('html', require('ejs').renderFile);
+app.use('/public', express.static(process.cwd() + '/public'));
+app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 // =====================================================================
@@ -48,14 +48,16 @@ app.get('/test', function (req, res, next) {
 
 // Home
 app.get('/', function (req, res, next) {
-    res.render('index.html');
+    res.render('index');
 });
 
 // Home - Stroy
 app.get('/story/:id', function (req, res, next) {
-    // TODO: show story on site
-    res.render('index.html');
+    server.get_story(req.params.id, function (story) {
+        res.render('index', { story: story });
+    });
 });
+
 // =====================================================================
 // =====================================================================
 // =====================================================================

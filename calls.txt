@@ -56,3 +56,7 @@ http://localhost/upload_file?type=recording&user_id=1&coord_id=1&previous_record
 
 Ratings (GET):
 http://localhost/set_data?type=rating&rating_recording_id=2&rating_user_id=1&rating_value=5
+
+
+* Note: Some get requests are actually used to edit/add data (instead of post requests).
+        Post requests are used only when files are needed to be posted.
