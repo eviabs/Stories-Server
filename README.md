@@ -10,7 +10,7 @@ For the app see [Stories-Client](https://github.com/eviabs/Stories-Client).
 ## Getting Started
 
 The server is a node.js app that interacts with access db. 
-At this moment, the server can run only in a **Windows** platform.
+At this moment, the server can run only on a **Windows** platform.
 These instructions will get you a copy of the project up and running on your local machine.
 
 ### Installing And Deployment
