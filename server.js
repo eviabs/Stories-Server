@@ -210,8 +210,12 @@ module.exports = {
                 }
                 // run query
                 run_sql_query(sql_commad, function (data) {
+                    var ret = {};
+                    ret.user_id = data.records[0].user_id;
+                    ret.user_name = data.records[0].user_name;
+
                     res.header("Content-Type", "application/json; charset=utf-8");
-                    res.end(JSON.stringify(data.records, null, 4));
+                    res.end(JSON.stringify(ret, null, 4));
                 });
                 break;
 
