@@ -45,7 +45,7 @@ module.exports = {
         var story_longitude = req.query.story_longitude;
 
         // Sound params
-        var sound_file = req.files["file1"];
+        var sound_file = req.files[( req.files["file1"] === undefined) ? "file0" : "file1"];
         var previous_recording_id = req.query.previous_recording_id;
         var recording_file_duration = req.query.recording_file_duration;
         var coord_id = req.query.coord_id; // if sound we also need:
@@ -66,8 +66,10 @@ module.exports = {
 
                     if (data.records.length !== 0) {
 
+                        console.log(req.files);
                         // Save audio file
                         sound_file.mv('storage/sound/' + SOUND + file_name, function (err) {
+
                             // if error
                             if (err) {
                                 res.header("Content-Type", "application/json; charset=utf-8").status(500);
