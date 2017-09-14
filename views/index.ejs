@@ -391,7 +391,7 @@
                 $("#story_user").append(story.story_user_name);
                 $("#story_date").append(new Date(story.story_creation_date).toLocaleDateString());
 
-                $("#story_location").attr('src', "https://maps.googleapis.com/maps/api/staticmap?autoscale=false&size=" + "600x300" +"&maptype=roadmap&format=jpg&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:%7C" + story.story_coord_latitude +",+" + story.story_coord_longitude + "&language=iw");
+                $("#story_location").attr('src', "https://maps.googleapis.com/maps/api/staticmap?autoscale=false&size=" + "600x300" +"&maptype=roadmap&format=jpg&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:%7C" + story.story_coord_latitude +",+" + story.story_coord_longitude + "&language=iw&key=AIzaSyDUVpgR2d_VflPEiThI71P3GhoZoEEiNdQ");
 
                 $("#story_modal").modal('show');
             }

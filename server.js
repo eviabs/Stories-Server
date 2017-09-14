@@ -66,7 +66,6 @@ module.exports = {
 
                     if (data.records.length !== 0) {
 
-                        console.log(req.files);
                         // Save audio file
                         sound_file.mv('storage/sound/' + SOUND + file_name, function (err) {
 
