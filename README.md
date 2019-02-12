@@ -1,3 +1,6 @@
+[![Analytics](https://ga-beacon.appspot.com/UA-121798497-2/github/eviabs/StoriesServer)](https://github.com/igrigorik/ga-beacon)
+[![Is this project still maintained?](https://img.shields.io/badge/maintained%3F-no-red.svg?style=plastic)](https://github.com/badges/shields)
+
 # Stories-Server
 
 This is the server side of the project. 
